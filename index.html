@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enjoy with Easy Games</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f8ff;
+      color: #333;
+      padding-top: 50px;
+    }
+    h1 {
+      font-size: 2.5em;
+      color: #FF69B4;
+      text-shadow: 2px 2px #FFD700;
+      margin-bottom: 30px;
+    }
+    .game-container {
+      max-width: 450px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .score {
+      font-size: 1.5em;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .cat-button {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 10px;
+      margin: 15px 0;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #ffffff;
+      background-color: #FFB6C1;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: transform 0.3s;
+      overflow: hidden;
+      animation: shake 0.5s infinite alternate;
+    }
+    .cat-button:hover {
+      transform: scale(1.05);
+      background-color: #FF69B4;
+    }
+    .cat-icon {
+      font-size: 1.8em;
+      margin-right: 10px;
+      animation: bounce 1s infinite alternate;
+    }
+    .points-message {
+      font-size: 1em;
+      color: #777;
+      margin-top: 10px;
+    }
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-5px); }
+    }
+    @keyframes shake {
+      0% { transform: rotate(-5deg); }
+      100% { transform: rotate(5deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <h1>Enjoy with Easy Games</h1>
+    <div class="score">Total Points: <span id="totalPoints">0</span></div>
+    
+    <button class="cat-button" onclick="openLink('https://www.youtube.com/channel/UCLBivSEh30F44ptAAgEVRUA?sub_confirmation=1', 100, 'meow1.mp3')">
+      🐱 Subscribe on YouTube
+    </button>
+    <button class="cat-button" onclick="openLink('https://www.facebook.com/profile.php?id=61566279998745', 50, 'meow2.mp3')">
+      🐈 Follow on Facebook
+    </button>
+    <button class="cat-button" onclick="openLink('https://www.tiktok.com/@assefagashaye', 50, 'meow3.mp3')">
+      🐾 Follow on TikTok
+    </button>
+    <button class="cat-button" onclick="openLink('https://t.me/GOGSmore', 75, 'meow4.mp3')">
+      🐱 Join Telegram
+    </button>
+
+    <div class="points-message" id="pointsMessage"></div>
+  </div>
+
+  <script>
+    let totalPoints = 0;
+
+    function openLink(url, points, sound) {
+      // Play sound
+      const audio = new Audio(sound);
+      audio.play();
+
+      // Open the link in a new tab
+      window.open(url, '_blank');
+      
+      // Add points to the total
+      totalPoints += points;
+      document.getElementById('totalPoints').innerText = totalPoints;
+
+      // Show points message
+      const pointsMessage = document.getElementById('pointsMessage');
+      pointsMessage.innerText = `+${points} points added!`;
+
+      // Clear message after a few seconds
+      setTimeout(() => pointsMessage.innerText = '', 2000);
+    }
+  </script>
+</body>
+</html>
